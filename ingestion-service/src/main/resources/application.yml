@@ -1,0 +1,23 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: ingestion-service
+
+  kafka:
+    bootstrap-servers: localhost:9093
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      properties:
+        acks: all
+        retries: 3
+    template:
+      default-topic: raw-expenses
+
+logging:
+  level:
+    com.trekker: DEBUG
+    org.springframework.kafka: INFO
+    org.apache.kafka: WARN
