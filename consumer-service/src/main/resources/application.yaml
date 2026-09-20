@@ -21,6 +21,9 @@ spring:
 
   kafka:
     bootstrap-servers: localhost:9093
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
     consumer:
       group-id: expense-processing-group
       auto-offset-reset: earliest
@@ -31,3 +34,9 @@ spring:
         spring.json.trusted.packages: "*"
         spring.json.use.type.headers: false
         spring.json.value.default.type: "com.trekker.consumer.dto.ExpenseEvent"
+
+logging:
+  level:
+    org.apache.kafka: WARN
+    org.springframework.kafka: WARN
+    org.hibernate.SQL: WARN

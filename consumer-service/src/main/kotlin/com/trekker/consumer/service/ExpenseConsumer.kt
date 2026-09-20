@@ -5,7 +5,10 @@ import com.trekker.consumer.domain.ExpenseRepository
 import com.trekker.consumer.dto.ExpenseEvent
 import org.slf4j.LoggerFactory
 import org.springframework.dao.DataIntegrityViolationException
+import org.springframework.kafka.annotation.DltHandler
 import org.springframework.kafka.annotation.KafkaListener
+import org.springframework.kafka.support.KafkaHeaders
+import org.springframework.messaging.handler.annotation.Header
 import org.springframework.stereotype.Service
 import java.util.UUID
 
@@ -43,4 +46,16 @@ class ExpenseConsumer(
         }
     }
 
+    @DltHandler
+    fun dltHandler(
+        event: ExpenseEvent,
+        @Header(KafkaHeaders.RECEIVED_TOPIC) topic: String,
+        @Header(KafkaHeaders.RECEIVED_PARTITION) partition: Int,
+        @Header(KafkaHeaders.OFFSET) offset: Long
+    ) {
+        log.error(
+            "Received event in DLT: id={}, topic={}, partition={}, offset={}",
+            event.id, topic, partition, offset
+        )
+    }
 }
