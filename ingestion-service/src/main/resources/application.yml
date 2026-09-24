@@ -5,6 +5,10 @@ spring:
   application:
     name: ingestion-service
 
+  mvc:
+    problemdetails:
+      enabled: true
+
   kafka:
     bootstrap-servers: localhost:9093
     producer:

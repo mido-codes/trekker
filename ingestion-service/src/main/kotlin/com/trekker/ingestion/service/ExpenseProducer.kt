@@ -14,7 +14,7 @@ class ExpenseProducer(
     fun sendExpense(event: ExpenseEvent) {
         logger.info("Sent ExpenseEvent to Kafka: ID={}", event.id)
 
-        kafkaTemplate.send("raw-expenses", event.id, event)
+        kafkaTemplate.send("raw-expenses", event.id.toString(), event)
             .whenComplete { result, ex ->
                 if (ex == null) {
                     logger.info("Event successfully sent! Partition={}, Offset{}",

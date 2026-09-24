@@ -1,4 +1,4 @@
-package com.trekker.ingestion
+package com.trekker.ingestion.config
 
 import org.apache.kafka.clients.admin.NewTopic
 import org.springframework.context.annotation.Bean

@@ -1,4 +1,4 @@
-package com.trekker.consumer
+package com.trekker.consumer.config
 
 import com.trekker.consumer.domain.FailedEventEntity
 import com.trekker.consumer.domain.FailedEventRepository

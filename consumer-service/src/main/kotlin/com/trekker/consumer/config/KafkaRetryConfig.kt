@@ -1,6 +1,5 @@
 package com.trekker.consumer.config
 
-import com.trekker.consumer.KafkaErrorHandler
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.kafka.config.ConcurrentKafkaListenerContainerFactory

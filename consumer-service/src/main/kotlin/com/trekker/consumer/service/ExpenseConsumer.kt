@@ -20,7 +20,7 @@ class ExpenseConsumer(
 
     @KafkaListener(topics = ["raw-expenses"], groupId = "expense-processing-group")
     fun consume(event: ExpenseEvent) {
-        val eventId = UUID.fromString(event.id)
+        val eventId = event.id
 
         if (expenseRepository.existsById(eventId)) {
             log.info("Event ${event.id} is already consumed.")

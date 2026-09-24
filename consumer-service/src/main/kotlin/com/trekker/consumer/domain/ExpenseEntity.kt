@@ -15,6 +15,6 @@ class ExpenseEntity(
     val amount: BigDecimal,
     val currency: String,
     val category: String,
-    val description: String,
+    val description: String?,
     val timestamp: Instant
 )
